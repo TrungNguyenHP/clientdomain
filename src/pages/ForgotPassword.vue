@@ -20,7 +20,7 @@
         >
           Gửi
         </button>
-        <p class="text-center text-sm text-gray-600">
+        <p class="text-center">
         <RouterLink to="/login" class="text-green-500 hover:underline font-medium">Quay lại đăng nhập</RouterLink>
         </p>
       </form>

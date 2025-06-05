@@ -10,13 +10,13 @@
         :key="service.id"
         class="mb-6 p-6 bg-gray-100 rounded-md shadow-sm"
       >
-        <div class="flex justify-between items-center flex-wrap gap-4">
+        <div class="flex justify-between items-center">
           <div>
-            <h2 class="text-xl font-semibold">{{ service.name }}</h2>
+            <h2 class="text-xl font-semibold text-blue-700">{{ service.name }}</h2>
             <p class="text-gray-600">Thời gian thuê: {{ service.duration }} tháng</p>
-            <p class="text-gray-600 text-sm">Ngày đăng ký: {{ service.registrationDate }}</p>
+            <p class="text-gray-600">Ngày đăng ký: {{ service.registrationDate }}</p>
           </div>
-          <button @click="goToRenew(service)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Gia hạn</button>
+          <button @click="goToRenew(service)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Gia hạn</button>
         </div>
       </div>
     </div>

@@ -1,14 +1,11 @@
 <template>
   <div class="select-none">
-    <!-- Hero Banner -->
-    <section class="bg-blue-700 text-white text-center py-20 bg-[url('https://www.transparenttextures.com/patterns/white-wall-3.png')] bg-cover bg-blend-overlay">
-      <div class="max-w-6xl mx-auto px-4">
-        <h1 class="text-5xl font-bold mb-4 flex items-center justify-center gap-2">
+    <section class="bg-blue-700 text-white text-center p-20 bg-[url('https://www.transparenttextures.com/patterns/white-wall-3.png')] bg-cover bg-blend-overlay">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-5xl font-bold mb-5">
           🌐 Sở hữu Domain đẹp chỉ trong vài phút!
         </h1>
         <p class="text-xl mb-6">Giá cạnh tranh, hỗ trợ tận tâm, đăng ký siêu tốc</p>
-
-        <!-- Search domain -->
         <div class="max-w-2xl mx-auto flex gap-2 mt-8">
           <input
             v-model="searchDomain"
@@ -23,8 +20,6 @@
         <p v-if="searchResult" class="mt-4 text-lg">{{ searchResult }}</p>
       </div>
     </section>
-
-    <!-- Các bước đăng ký -->
     <section class="py-16 bg-white">
       <div class="max-w-6xl mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold text-blue-600 mb-10">Đăng ký domain trong 3 bước</h2>
@@ -47,8 +42,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Vì sao chọn chúng tôi -->
     <section class="py-16 bg-gray-100">
       <div class="max-w-6xl mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold text-blue-600 mb-10">Vì sao nên chọn DomainStore?</h2>
@@ -71,8 +64,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Gói nổi bật -->
     <section class="py-16 bg-white">
       <div class="max-w-6xl mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold text-blue-600 mb-10">Gói Domain nổi bật</h2>
@@ -98,8 +89,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Khách hàng -->
     <section class="py-16 bg-gray-100">
       <div class="max-w-6xl mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold text-blue-600 mb-10">Khách hàng nói gì về chúng tôi</h2>
@@ -133,8 +122,6 @@
         </div>
       </div>
     </section>
-
-    <!-- CTA cuối trang -->
     <section class="py-16 bg-blue-600 text-white">
       <div class="max-w-6xl mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold mb-4">Sẵn sàng sở hữu Domain riêng?</h2>
@@ -149,7 +136,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import axios from 'axios'
+import api from '@/plugins/axios'
 
 const searchDomain = ref('')
 const searchResult = ref('')
@@ -168,7 +155,7 @@ async function checkDomain() {
   }
 
   try {
-    const response = await axios.get('http://localhost:5246/api/registered_domain', {
+    const response = await api.get('/registered_domain', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -190,6 +177,5 @@ async function checkDomain() {
     searchResult.value = 'Có lỗi xảy ra khi kiểm tra domain. Vui lòng thử lại sau.'
   }
 }
-
  
 </script>

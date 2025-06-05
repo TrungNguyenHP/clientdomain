@@ -1,14 +1,14 @@
 <template>
-  <div class="p-8 max-w-lg mx-auto select-none">
-    <h1 class="text-2xl font-semibold mb-6 text-blue-700">Đăng ký đuôi .{{ domainName }}</h1>
+  <div class="max-w-lg mx-auto p-8 shadow-xl round select-none">
+    <h1 class="text-2xl font-semibold text-blue-700 mb-6">Đăng ký đuôi .{{ domainName }}</h1>
     <form @submit.prevent="submit" class="flex flex-col gap-4">
-      <label for="domain" class="text-lg font-medium mb-1">Nhập tên miền bạn muốn đăng ký với đuôi trên</label>
+      <label for="domain" class="text-lg mb-1 font-medium">Nhập tên miền bạn muốn đăng ký với đuôi trên</label>
       <input
         v-model="keyword"
         id="domain"
         type="text"
         placeholder="Ví dụ: yourbrand"
-        class="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
       />
       <button
         type="submit"

@@ -1,7 +1,6 @@
 <template>
-  <nav class="bg-blue-600 text-white shadow border-b border-blue-500 select-none">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <!-- Bên trái: Logo và menu -->
+  <nav class="bg-blue-600 text-white select-none">
+    <div class="max-w-7xl mx-auto py-4 px-6 flex justify-between items-center">
       <div class="flex items-center gap-8">
         <router-link
           to="/"
@@ -9,37 +8,33 @@
         >
           DomainStore
         </router-link>
-
         <router-link
           to="/domains"
           class="text-lg hover:text-gray-300 transition"
-          active-class="font-semibold text-white border-b-2 border-white"
+          active-class="font-semibold border-b-2"
         >
           Các gói domain
         </router-link>
         <router-link
           to="/renew"
           class="text-lg hover:text-gray-300 transition"
-          active-class="font-semibold text-white border-b-2 border-white"
+          active-class="font-semibold border-b-2 "
         >
           Dịch vụ của bạn
         </router-link>
         <router-link
           to="/news"
           class="text-lg hover:text-gray-300 transition"
-          active-class="font-semibold text-white border-b-2 border-white"
+          active-class="font-semibold border-b-2"
         >
           Tin tức
         </router-link>
       </div>
-
-      <!-- Bên phải: Liên hệ và user menu -->
-      <div class="flex items-center gap-6">
-        <div class="hidden md:flex flex-col text-sm text-right leading-5">
+      <div class="flex items-center gap-8">
+        <div class="hidden md:flex flex-col text-right leading-5">
           <div>📞 0916070437</div>
           <div>📧 trung92360@st.vimaru.edu.vn</div>
         </div>
-
         <div v-if="isLoggedIn" class="relative">
           <button
             @click="toggleProfileDropdown"
@@ -57,11 +52,10 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-
           <transition name="fade">
             <div
               v-if="profileDropdownOpen"
-              class="absolute right-0 mt-3 w-60 bg-white text-gray-800 rounded-xl shadow-lg z-50 overflow-hidden"
+              class="absolute right-0 mt-3 w-60	z-50 bg-white text-gray-800 rounded-xl shadow-lg overflow-hidden"
             >
               <router-link
                 to="/profile"
@@ -100,7 +94,6 @@
             </div>
           </transition>
         </div>
-
         <router-link
           v-else
           to="/login"
@@ -112,7 +105,6 @@
     </div>
   </nav>
 </template>
-
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'

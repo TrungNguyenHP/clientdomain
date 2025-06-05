@@ -7,18 +7,14 @@
     </div>
 
     <div v-else>
-      <div
-        v-for="service in services"
-        :key="service.id"
-        class="mb-6 p-6 bg-gray-100 rounded-md shadow-sm"
-      >
+      <div v-for="service in services" class="mb-6 p-6 bg-gray-100 rounded-md shadow-sm">
         <div class="flex justify-between items-center">
           <div>
-            <h2 class="text-xl font-semibold">{{ service.name }}</h2>
+            <h2 class="text-xl font-semibold text-blue-700">{{ service.name }}</h2>
             <p class="text-gray-600">Thời gian thuê: {{ service.duration }} tháng</p>
             <p class="text-gray-600">Phương thức thanh toán: {{ service.paymentMethod }}</p>
-            <p class="text-gray-600 text-sm">Ngày đăng ký: {{ service.registrationDate }}</p>
-            <p class="text-gray-600 text-sm">Tình trạng: {{ service.status }}</p>
+            <p class="text-gray-600">Ngày đăng ký: {{ service.registrationDate }}</p>
+            <p class="text-gray-600">Tình trạng: {{ service.status }}</p>
           </div>
           <div class="text-right">
             <p class="text-lg font-bold text-blue-700">{{ formatVND(service.price) }}</p>

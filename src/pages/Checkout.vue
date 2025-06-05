@@ -2,39 +2,37 @@
   <div class="max-w-6xl mx-auto px-4 py-16 select-none">
     <h1 class="text-3xl font-bold text-center text-blue-600 mb-10">Xác nhận Thanh Toán</h1>
 
-    <div class="bg-white max-w-xl mx-auto p-6 rounded-lg shadow border space-y-6">
+    <div class="max-w-xl mx-auto p-6 rounded-lg shadow border space-y-6">
       <div>
-        <p class="text-gray-700 text-lg"><strong class="text-blue-600">Tên miền:</strong> {{ domain }}</p>
+        <p><strong class="text-blue-600 text-lg">Tên miền:</strong> {{ domain }}</p>
       </div>
-
       <div class="space-y-4">
-        <p class="text-gray-700 text-lg"><strong class="text-blue-600">Thời gian thuê:</strong></p>
+        <p><strong class="text-blue-600 text-lg">Thời gian thuê:</strong></p>
         <input
           v-model.number="months"
           type="number"
           min="1"
-          class="w-full border-2 border-gray-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full border-2 border-gray-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           placeholder="Thời gian thuê (tháng)"
         />
         <input
           v-model="discountCode"
           type="text"
-          class="w-full border-2 border-gray-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full border-2 border-gray-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           placeholder="Mã giảm giá (nếu có)"
         />
         <select
           v-model="selectedPayment"
-          class="w-full border-2 border-gray-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full border-2 border-gray-200 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         >
           <option disabled value="">Chọn phương thức thanh toán</option>
-          <option v-for="method in paymentMethods" :key="method.id" :value="method.id">
+          <option v-for="method in paymentMethods" :value="method.id">
             {{ method.paymentMethodName }}
           </option>
         </select>
       </div>
-
-      <div class="text-lg text-gray-800">
-        <strong class="text-blue-600">Tổng giá:</strong> {{ formatVND(totalPrice) }}
+      <div >
+        <strong class="text-blue-600 text-lg">Tổng giá:</strong> {{ formatVND(totalPrice) }}
       </div>
 
       <button
@@ -85,22 +83,22 @@ const submitOrder = async () => {
   const token = localStorage.getItem('token')
   if (!token) return alert('Bạn cần đăng nhập')
   if (!selectedPayment.value) return alert('Chọn phương thức thanh toán')
-
+  if (months.value < 1) return alert('Thời gian thuê phải lớn hơn 0')
   try {
-    await api.post('/api/order', {
+    await api.post('/order', {
       domainProductId,
       paymentMethodId: selectedPayment.value,
       DiscountCode: discountCode.value || null,
       durationByMonth: months.value,
       domainFirstPart: domain.split('.')[0]
-    }, {
+    },
+    {
       headers: { Authorization: `Bearer ${token}` }
     })
-
-    alert('Đơn hàng đã được tạo!')
     router.push('/ordersuccess')
   } catch (err) {
-    alert('Tạo đơn hàng thất bại!')
+    console.error('Lỗi tạo đơn:', err)
+    alert('Tạo đơn hàng thất bại! Hãy thử lại.')
   }
 }
 </script>

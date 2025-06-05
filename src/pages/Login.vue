@@ -27,7 +27,7 @@
       >
         Đăng nhập
       </button>
-      <p class="text-center text-gray-600">
+      <p class="text-center">
           <RouterLink to="/forgot-password" class="text-blue-500 hover:underline font-medium">Quên mật khẩu</RouterLink>
       </p>
       <p class="text-center text-gray-600">

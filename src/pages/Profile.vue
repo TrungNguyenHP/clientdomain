@@ -1,9 +1,7 @@
 <template>
-  <div class="max-w-3xl mx-auto p-8 bg-white shadow-lg rounded-lg select-none">
+  <div class="max-w-3xl mx-auto p-8 shadow-lg rounded-lg select-none">
     <h1 class="text-3xl font-semibold text-center mb-8 text-blue-700">Thông tin hồ sơ</h1>
-
     <form @submit.prevent="handleSubmit" class="space-y-6">
-      <!-- Loại khách hàng -->
       <div>
         <label class="block text-lg font-medium mb-1">Loại khách hàng</label>
         <input
@@ -13,8 +11,6 @@
           disabled
         />
       </div>
-
-      <!-- Tên -->
       <div>
         <label for="name" class="block text-lg font-medium mb-1">Tên người dùng</label>
         <input
@@ -28,8 +24,6 @@
           ]"
         />
       </div>
-
-      <!-- Email (không chỉnh sửa) -->
       <div>
         <label for="email" class="block text-lg font-medium mb-1">Email</label>
         <input
@@ -40,8 +34,6 @@
           class="w-full p-3 border rounded-md bg-gray-100 cursor-not-allowed"
         />
       </div>
-
-      <!-- Số điện thoại -->
       <div>
         <label for="phone" class="block text-lg font-medium mb-1">Số điện thoại</label>
         <input
@@ -55,8 +47,6 @@
           ]"
         />
       </div>
-
-      <!-- Địa chỉ -->
       <div>
         <label for="address" class="block text-lg font-medium mb-1">Địa chỉ</label>
         <input
@@ -70,8 +60,6 @@
           ]"
         />
       </div>
-
-      <!-- Nút chỉnh sửa / lưu -->
       <div class="text-right">
         <button
           type="button"
@@ -94,7 +82,6 @@ import api from '@/plugins/axios'
 const isEditing = ref(false)
 const id = ref('')
 const customtype = ref('')
-const customerTypeId = ref('')
 const name = ref('')
 const email = ref('')
 const phone = ref('')

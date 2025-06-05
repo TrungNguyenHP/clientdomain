@@ -1,6 +1,6 @@
 <template>
-  <div class="border p-6 rounded-lg hover:shadow-lg transition text-center">
-    <h2 class="text-2xl font-bold text-blue-700 mb-2">.{{ domain.name }}</h2>
+  <div class="border text-center p-6 rounded-lg hover:shadow-lg transition">
+    <h2 class="text-2xl font-bold text-blue-700 mb-2 ">.{{ domain.name }}</h2>
     <p class="text-3xl font-bold text-blue-500 mb-4">{{ formatVND(domain.price) }}/tháng</p>
     <router-link
       :to="`/registerdomain/${domain.name}`"

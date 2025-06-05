@@ -1,10 +1,8 @@
 <template>
-  <div class="select-none">
-    <div class="w-full max-w-md bg-white rounded-xl p-10 mx-auto mt-10">
+  <div class="max-w-xl mx-auto p-4 shadow-lg rounded-lg select-none">
       <div class="text-center mb-6">
         <h1 class="text-4xl font-bold text-blue-600">Đổi mật khẩu</h1>
       </div>
-
       <form @submit.prevent="changePassword" class="space-y-5">
         <input
           type="password"
@@ -29,12 +27,11 @@
         />
         <button
           type="submit"
-          class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700"
+          class="w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition"
         >
           Cập nhật mật khẩu
         </button>
       </form>
-    </div>
   </div>
 </template>
 
@@ -65,15 +62,12 @@ const changePassword = async () => {
         }
       }
     )
-
     alert(response.data || 'Đổi mật khẩu thành công!')
     oldPassword.value = ''
     newPassword.value = ''
     confirmPassword.value = ''
   } catch (error: any) {
-    alert(
-      error.response?.data || 'Đổi mật khẩu thất bại. Vui lòng thử lại.'
-    )
+    alert(error.response?.data || 'Đổi mật khẩu thất bại. Vui lòng thử lại.')
   }
 }
 </script>
